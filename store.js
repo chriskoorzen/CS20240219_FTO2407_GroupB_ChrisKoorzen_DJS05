@@ -2,7 +2,7 @@
 const createStore = (initial) => {
 
     const states = [initial];
-    const subscribers = [];
+    const subscribers = new Set();
 
     const dispatch = (action) => {};
 
@@ -10,7 +10,19 @@ const createStore = (initial) => {
         return states[states.length -1];
     };
 
-    const subscribe = (handler) => {};
+    const subscribe = (handler) => {
+        subscribers.add(handler);
 
-    return [dispatch, getState, subscribe];
+        const removeSubscriber = () => {
+            return unsubscribe(handler);
+        };
+
+        return removeSubscriber;
+    };
+
+    const unsubscribe = (handler) => {
+        return subscribers.delete(handler);
+    };
+
+    return [dispatch, getState, subscribe, unsubscribe];
 };
