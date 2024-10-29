@@ -1,5 +1,5 @@
 
-const createStore = (initial) => {
+export const createStore = (initial) => {
 
     const states = [Object.freeze(initial)];
     const subscribers = new Set();

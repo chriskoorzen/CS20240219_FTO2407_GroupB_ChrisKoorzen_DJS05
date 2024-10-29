@@ -1,21 +1,21 @@
 
-const initialCounter = {
+export const initialCounter = {
     count: 0
 };
 
-const add = (counter) => {
+export const add = (counter) => {
     return {
         count: counter.count +1
     };
 };
 
-const subtract = (counter) => {
+export const subtract = (counter) => {
     return {
         count: counter.count -1
     };
 };
 
-const reset = (counter) => {
+export const reset = (counter) => {
     return {
         count: 0
     };
