@@ -50,5 +50,10 @@ const createStore = (initial) => {
         return subscribers.delete(handler);
     };
 
-    return [dispatch, getState, subscribe, unsubscribe];
+    return {
+        dispatch,
+        getState,
+        subscribe,
+        unsubscribe
+    };
 };
