@@ -6,7 +6,9 @@ const createStore = (initial) => {
 
     const dispatch = (action) => {};
 
-    const getState = () => {};
+    const getState = () => {
+        return states[states.length -1];
+    };
 
     const subscribe = (handler) => {};
 
