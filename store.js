@@ -13,7 +13,14 @@ const createStore = (initial) => {
         const next = Object.freeze(action(prev));
 
         subscribers.forEach(
-            (handler) => { handler(next, prev); }
+            (handler) => { 
+                try {
+                    handler(next, prev); 
+                } catch (error){
+                    console.error("Subscriber handler function failed on dispatch.");
+                    console.error(error);
+                };
+            }
         );
         
         states.push(next);
