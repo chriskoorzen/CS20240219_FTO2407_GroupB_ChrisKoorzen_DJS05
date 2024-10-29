@@ -1,10 +1,22 @@
 
 const createStore = (initial) => {
 
-    const states = [initial];
+    const states = [Object.freeze(initial)];
     const subscribers = new Set();
 
-    const dispatch = (action) => {};
+    const dispatch = (action) => {
+
+        const prev = getState();
+        const next = Object.freeze(action(prev));
+
+        subscribers.forEach(
+            (handler) => { handler(next, prev); }
+        );
+        
+        states.push(next);
+
+        return [next, prev];
+    };
 
     const getState = () => {
         return states[states.length -1];
