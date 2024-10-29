@@ -5,6 +5,9 @@ const createStore = (initial) => {
     const subscribers = new Set();
 
     const dispatch = (action) => {
+        if(typeof action !== "function"){
+            throw new Error("action is required to be a function");
+        };
 
         const prev = getState();
         const next = Object.freeze(action(prev));
@@ -23,6 +26,10 @@ const createStore = (initial) => {
     };
 
     const subscribe = (handler) => {
+        if(typeof handler !== "function"){
+            throw new Error("handler is required to be a function");
+        };
+
         subscribers.add(handler);
 
         const removeSubscriber = () => {
