@@ -3,8 +3,20 @@ const initialCounter = {
     count: 0
 };
 
-const add = (counter) => {};
+const add = (counter) => {
+    return {
+        count: counter.count +1
+    };
+};
 
-const subtract = (counter) => {};
+const subtract = (counter) => {
+    return {
+        count: counter.count -1
+    };
+};
 
-const reset = (counter) => {};
+const reset = (counter) => {
+    return {
+        count: 0
+    };
+};
