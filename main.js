@@ -11,6 +11,11 @@ const tallyStore = createStore(
     { count: 0 }
 );
 
+// Register anonymous listener function
+tallyStore.subscribe((current, old)=>{
+    console.log("My old value is:", old, '\n', "My new value is: ", current);
+})
+
 // Scenario 1
 await sleep(1000);
 console.log("Scenario 1: ", tallyStore.getState());
