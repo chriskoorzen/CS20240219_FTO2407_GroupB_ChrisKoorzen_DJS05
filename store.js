@@ -2,7 +2,7 @@
  * @typedef {Object} GenericStore A generic store that keeps track of application state.
  * @prop {function(Dispatcher): [CurrentState, PreviousState]} dispatch Triggers the passed user-defined Dispatcher. Returns CurrentState and PreviousState.
  * @prop {function} getState Returns the current state of the application.
- * @prop {function} subscribe Registers a Subscriber.
+ * @prop {function} subscribe Registers a Subscriber. Returns the unsubscribe function bound to the Subscriber passed
  * @prop {function} unsubscribe Removes a Subscriber.
  */
 /**
@@ -84,7 +84,7 @@ export const createStore = (initial) => {
 
     
     /**
-     * Registers a Subscriber.
+     * Registers a Subscriber. Returns the unsubscribe function bound to the Subscriber passed.
      *
      * @param {Subscriber} handler
      * @returns {unsubscribe(handler:Subscriber)}
