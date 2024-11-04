@@ -58,11 +58,10 @@ export const createStore = (initial) => {
 
         subscribers.forEach(
             (handler) => { 
-                try {
+                try {                       // Subscriber failure shouldn't break state updates
                     handler(next, prev); 
                 } catch (error){
-                    console.error("Subscriber handler function failed on dispatch.");
-                    console.error(error);
+                    console.error("Subscriber handler function failed on dispatch.", error);
                 };
             }
         );
