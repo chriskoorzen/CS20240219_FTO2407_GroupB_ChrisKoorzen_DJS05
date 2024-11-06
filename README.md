@@ -16,7 +16,16 @@ It allows ```Subscribers``` to "know" properties are present without having to r
 
 ### Store Initialization
 
-A ```Store``` is created via the ```createStore``` factory function, by passing to it the initial user-defined ```State``` object. It is recommended to have only one ```Store``` object per application.
+A ```Store``` is created via the ```createStore``` factory function, by passing it the initial user-defined ```State``` object. It returns a ```Store``` object with the following methods:
+
+```getState()``` Returns the current ```State``` of the application.\
+```dispatch( Dispatcher )``` Triggers the user-defined ```Dispatcher```. Returns new current ```State``` and previous ```State```.\
+```subscribe( Subscriber )``` Registers a ```Subscriber```. Returns the ```unsubscribe``` method bound to the ```Subscriber``` passed.\
+```unsubscribe( Subscriber )``` Removes a ```Subscriber```. Returns ```true``` if successful.\
+```rewind()``` Rewind application ```State``` to an earlier version (if exists).\
+```forward()``` Forward application ```State``` to a newer version (if exists).
+
+It is recommended to have only one ```Store``` object per application.
 
 
 ### Modifying State
