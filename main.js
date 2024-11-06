@@ -5,10 +5,7 @@ import {
     reset
 } from "./tally.js";
 
-import { 
-    initialNotepad,
-    update
-} from "./note.js";
+import { update } from "./note.js";
 
 import { sleep } from "./utility.js";
 
@@ -46,7 +43,7 @@ console.log("Scenario 4: ", tallyStore.getState());
 // ---- Demonstrate UI coupling ----
 // Setup
 const noteStore = createStore(
-    initialNotepad
+    { words: "begin" }
 );
 
 // Subscribe to changes
