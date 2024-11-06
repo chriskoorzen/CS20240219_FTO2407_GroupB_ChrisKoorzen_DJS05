@@ -141,7 +141,7 @@ export const createStore = (initial) => {
                 try {                       // Subscriber failure shouldn't break state updates
                     handler(next, prev); 
                 } catch (error){
-                    console.error("Subscriber handler function failed on dispatch.", error);
+                    console.error("Subscriber function failed.\n", error, `Failed Handler:\n${handler}`);
                 };
             }
         );
