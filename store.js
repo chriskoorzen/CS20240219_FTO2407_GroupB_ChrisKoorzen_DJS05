@@ -31,7 +31,7 @@
  * Factory function to create GenericStore objects. A user-defined application state object is passed to initialize the store.
  *
  * @constructs GenericStore
- * @param {Object} initial
+ * @param {State} initial
  */
 export const createStore = (initial) => {
 
@@ -43,8 +43,8 @@ export const createStore = (initial) => {
     /**
      * Triggers the passed user-defined Dispatcher. Returns current State and previous State to the dispatcher.
      *
-     * @param {Dispatcher} action
-     * @returns {[State, State]}
+     * @param {Dispatcher} action A user defined function that accepts a State object (read-only), and must return a new State object.
+     * @returns {[State, State]} An Array with the new State at index 0, and the previous State at index 1.
      */
     const dispatch = (action) => {
         if(typeof action !== "function"){
@@ -134,6 +134,7 @@ export const createStore = (initial) => {
         return subscribers.delete(handler);
     };
 
+    /** Internal function that runs all registered subscribers */
     const _trigger_subscribers = (next, prev) => {
         subscribers.forEach(
             (handler) => { 
